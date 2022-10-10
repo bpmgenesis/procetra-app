@@ -157,6 +157,7 @@ export class MapColumnsController extends UIController {
     }
 
     public BindRouterParams({ project, file_name, file_ext, content }: { project: IProjectModel, file_name: string, file_ext: string, content: string }) {
+       debugger;
         this.BeginUpdate();
         this.project = project;
         this.fileName = file_name;
@@ -180,9 +181,8 @@ export class MapColumnsController extends UIController {
             })
         });
 
-        this.gridHeaders = headers;
-
         this.EndUpdate();
+        this.gridHeaders = headers;
 
     }
 

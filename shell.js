@@ -34,9 +34,11 @@ const appStoreInfo = JSON.parse(a);
 const result = appStoreInfo.apps.find(item => item.id === appName);
 
 if (result) {
+    
     const index = appStoreInfo.apps.indexOf(result);
     appStoreInfo.apps[index] = require('./src/AppStoreInfo');
 } else {
+    console.log('Appstore info not found.')
     appStoreInfo.apps.push(require('./src/AppStoreInfo'));
 }
 const aa = JSON.stringify(appStoreInfo);

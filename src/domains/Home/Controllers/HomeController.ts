@@ -17,6 +17,7 @@ import {
     UIController,
     UIImage,
     UIMotion,
+    UIProgressBar,
     UIScene,
     UIView,
     VStack,
@@ -118,7 +119,7 @@ export class HomeController extends UIController {
                             MenuButton('', '\\d21d', () => this.OnNewProject()),
                             MenuButton('', '\\d272', () => this.OnNewProject()),
                         ).width('120px'),
-                        RecentProjects()
+                        RecentProjects(),
                     )
                         // UIScene içerisine yayılması için
                         .width('100%')

@@ -21,7 +21,11 @@ export class SelectUploadFileController extends UIController {
     }
     public action_OnFileSelected(fileInfo: IUploadFileReady) {
         console.log('/app(procetra)/project/' + this.project.project_id + '/upload-map-columns');
-        this.navigotor('/app(procetra)/project/' + this.project.project_id + '/upload-map-columns', { state: { project: this.project, file_name: fileInfo.fileName, file_ext: fileInfo.fileExt, content: fileInfo.GetFileContentAsString() } });
+        this.navigotor('/app(procetra)/project/' + this.project.project_id + '/upload-map-columns',
+            {
+                state:
+                    { project: this.project, file_name: fileInfo.fileName, file_ext: fileInfo.fileExt, content: fileInfo.GetFileContentAsString() }
+            });
     }
     public LoadView(): UIView {
         return (
@@ -32,7 +36,7 @@ export class SelectUploadFileController extends UIController {
                             Icon('\\e241').size(24).foregroundColor('#263238'),
                             RegularText('Upload data').fontSize(20)
                         ).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'),
-                        Steps(['Select File', 'Map Columns', 'Upload File', 'Data Analysis'], 0),
+                        Steps(['Select File__', 'Map Columns', 'Upload File', 'Data Analysis'], 0),
                         VStack(
                             UIFileUpload(
                                 VStack(
@@ -49,7 +53,8 @@ export class SelectUploadFileController extends UIController {
 
                                 .marginTop('10px')
                                 .width(600)
-                                .height(400).onFileReady((e) => { this.action_OnFileSelected(e) })
+                                .height(400)
+                                .onFileReady((e) => { this.action_OnFileSelected(e) })
                         ),
                         HStack({ alignment: cTrailing })(
                             CancelButton('Cancel'),
