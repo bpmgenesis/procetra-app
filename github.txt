@@ -1,0 +1,23 @@
+git rm -rf --cached .
+git add .
+
+git remote set-url origin https://bpmgenesis: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@github.com/bpmgenesis/procetra.git
+
+git remote set-url origin https://tuvalframework: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@github.com/bpmgenesis/procetra.git
+
+git remote set-url origin https://selimtan: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@github.com/bpmgenesis/procetra.git
+
+npm
+
+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
+
+echo "# procetra" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/bpmgenesis/procetra.git
+git push -u origin main
+
+git tag v0.9.1
+git push origin --tags
