@@ -49,11 +49,11 @@ const form = {
     "screenMode": "half",
     "postUrl": "http://localhost:3002/db/save/users",
     controls: [
-       /*  {
-            "type": "datasource",
-            "key": "products",
-            "url": "https://dummyjson.com/products"
-        }, */
+        /*  {
+             "type": "datasource",
+             "key": "products",
+             "url": "https://dummyjson.com/products"
+         }, */
         {
             "type": "uuid",
             "key": "UserID",
@@ -229,7 +229,7 @@ export class HomeController extends UIController {
             debugger;
             if (project.is_data_loaded) {
                 MiningBrokerClient.LoadEventData(project.project_id).then(() => {
-                    this.navigotor('/app(procetra)/project/' + project.project_id, { state: { project: project } })
+                    this.navigotor('/app(procetra)/project/' + project.project_id + '/select-analysis-module', { state: { project: project } })
                 });
             } else {
                 this.navigotor('/app(procetra)/project/' + project.project_id + '/empty', { state: { project: project } })

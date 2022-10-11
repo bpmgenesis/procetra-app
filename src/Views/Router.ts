@@ -8,7 +8,8 @@ import { MapColumnsController } from '../domains/DataUpload/MapColumnsController
 import { UploadFileController } from '../domains/DataUpload/UploadDataController';
 import { theme } from '../theme/theme';
 import { DeleteMiningModelController } from '../domains/MiningModel/Controllers/DeleteMiningModel.Controller';
-import { ProcessOverviewController,OverviewController } from '@procetra/modules/processoverview';
+import { ProcessOverviewController, OverviewController,ThroughputTimesController } from '@procetra/modules/processoverview';
+import { SelectAnalysisModuleController } from '../domains/Project/Controllers/SelectAnalysisModuleController';
 
 export const Routes = () => {
     const [LoggedIn, setLoggedIn] = bindState(null);
@@ -25,6 +26,14 @@ export const Routes = () => {
 
     return UIRoutes(
         UIRoute('/app(procetra)/home', HomeController),
+        UIRoute(
+            UIRoute(
+                UIRoute('overview', OverviewController),
+                UIRoute('throughput-times', ThroughputTimesController)
+            )('modules/process-overview', ProcessOverviewController),
+            UIRoute('select-analysis-module', SelectAnalysisModuleController),
+        )('/app(procetra)/project/:project_id', ProjectControllerClass),
+
         UIRoute('/app(procetra)/project/:project_id', ProjectControllerClass),
         UIRoute('/app(procetra)/project/:project_id/empty', EmptyProjectControllerClass),
         UIRoute('/app(procetra)/project/:project_id/select-file', SelectUploadFileController),

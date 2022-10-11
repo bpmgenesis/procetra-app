@@ -1,5 +1,5 @@
 import { IProjectModel, PageButton, Services, IMiningModelModel, MiningBrokerClient, FormView, SelectAnalysisView, ProjectMainMenu } from '@procetra/common';
-import { Event } from '@tuval/core';
+import { Event, int } from '@tuval/core';
 import {
     cLeading,
     cTop,
@@ -8,12 +8,15 @@ import {
     HDivider,
     HStack,
     Icon,
+    PositionTypes,
     RenderingTypes,
     Spacer,
     State,
     Text,
     UIContextMenu,
     UIController,
+    UIImage,
+    UIRouteOutlet,
     UIScene,
     VStack,
 } from '@tuval/forms';
@@ -24,6 +27,7 @@ import { AnimHeadline5, SectionHeadline } from '../../../UI/Views/Texts';
 import { MVITitleMenu } from '../Models/MVITitleMenu';
 import { AnalyseModelTileBox } from '../Views/AnalyseModelTileBox';
 import { Spinner } from '@tuval/forms';
+import { Resources } from '../../../Resources';
 
 const infoText = `
 To upload data you must first map the fields (columns) of your data file.
@@ -47,6 +51,12 @@ export class ProjectControllerClass extends UIController {
 
     @State()
     public model: IMiningModelModel[];
+
+    @State()
+    private eventCount:int;
+
+    @State()
+    private caseCount:int;
 
     @State()
     public selectedAnalyseModel: IMiningModelModel;
@@ -158,6 +168,15 @@ export class ProjectControllerClass extends UIController {
                     command: (item) => this.navigotor(`/app(procetra)/project/${this.project.project_id}/select-file`)
                 }
             ];
+
+            Promise.all([
+                MiningBrokerClient.GetEventCount(project.project_id),
+                MiningBrokerClient.GetCaseCount(project.project_id)
+            ]).then(results => {
+                this.eventCount = results[0];
+                this.caseCount = results[1];
+            })
+
         })
 
 
@@ -265,8 +284,9 @@ export class ProjectControllerClass extends UIController {
     private AnalyseModelView() {
         return (
             VStack(
-                ProjectMainMenu('Test', 'Process Overview', 100, 190, [], () => alert(''), this.menu, [], []),
-                this.view_SelectAnalysis()
+                ProjectMainMenu(this.project?.project_name, 'Process Overview', this.eventCount ?? 0, this.caseCount ?? 0, [], () => alert(''), this.menu, [], []),
+                UIRouteOutlet().width('100%').height('100%')
+                //this.view_SelectAnalysis()
             )
         )
     }
