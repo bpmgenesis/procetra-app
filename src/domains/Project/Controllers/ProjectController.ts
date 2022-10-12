@@ -284,7 +284,7 @@ export class ProjectControllerClass extends UIController {
     private AnalyseModelView() {
         return (
             VStack(
-                ProjectMainMenu(this.project?.project_name, 'Process Overview', this.eventCount ?? 0, this.caseCount ?? 0, [], () => alert(''), this.menu, [], []),
+              
                 UIRouteOutlet().width('100%').height('100%')
                 //this.view_SelectAnalysis()
             )

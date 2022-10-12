@@ -1,5 +1,5 @@
-import { State, Text, UIController } from "@tuval/forms";
-import { SelectAnalysisView, IProjectModel, MiningBrokerClient } from '@procetra/common';
+import { State, Text, UIController, VStack } from "@tuval/forms";
+import { SelectAnalysisView, IProjectModel, MiningBrokerClient, ProjectMainMenu } from '@procetra/common';
 
 
 export class SelectAnalysisModuleController extends UIController {
@@ -13,8 +13,11 @@ export class SelectAnalysisModuleController extends UIController {
 
     public override LoadView() {
         return (
-            Text('Select Module'),
+           VStack(
+            ProjectMainMenu(this,this.project, 'Process Overview', this.eventCount ?? 0, this.caseCount ?? 0, [], () => alert(''), this.menu, [], []),
             SelectAnalysisView(this.project)
+           )
+            
         )
     }
 }
