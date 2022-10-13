@@ -31,7 +31,7 @@ export class SelectUploadFileController extends UIController {
         return (
             UIScene(
                 VStack({ alignment: cTopLeading })(
-                    ProjectMainMenu(this,this.project?.project_name, 'Process Overview', this.eventCount ?? 0, this.caseCount ?? 0, [], () => alert(''), null, [], []),
+                    ProjectMainMenu(this,this.project, 'Process Overview', [], () => alert(''), null, [], []),
                     VStack({ alignment: cLeading })(
                         Steps(['Select File', 'Map Columns', 'Upload File', 'Data Analysis'], 0),
                         VStack(

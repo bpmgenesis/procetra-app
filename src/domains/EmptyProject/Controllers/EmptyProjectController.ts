@@ -25,7 +25,7 @@ export class EmptyProjectControllerClass extends UIController {
             this.project == null ? Spinner() :
                 UIScene(
                     VStack(
-                        ProjectMainMenu(this,this.project, 'Process Overview', this.eventCount ?? 0, this.caseCount ?? 0, [], () => alert(''), this.menu, [], []),
+                        ProjectMainMenu(this,this.project, 'Process Overview', [], () => alert(''), this.menu, [], []),
                         VStack({ alignment: cTop, spacing: 20 })(
                             HDivider().height(70),
                             HStack({ spacing: 5 })(

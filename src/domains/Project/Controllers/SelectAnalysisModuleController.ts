@@ -14,7 +14,7 @@ export class SelectAnalysisModuleController extends UIController {
     public override LoadView() {
         return (
            VStack(
-            ProjectMainMenu(this,this.project, 'Process Overview', this.eventCount ?? 0, this.caseCount ?? 0, [], () => alert(''), this.menu, [], []),
+            ProjectMainMenu(this,this.project, 'Process Overview',  [], () => alert(''), this.menu, [], []),
             SelectAnalysisView(this.project)
            )
             
