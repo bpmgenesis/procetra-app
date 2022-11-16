@@ -125,7 +125,7 @@ export class HomeController extends UIController {
                         .width('100%')
                 )
 
-            )
+            ).background('var(--dark-background-color)')
         )
     }
 

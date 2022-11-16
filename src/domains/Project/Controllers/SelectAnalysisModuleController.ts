@@ -13,11 +13,10 @@ export class SelectAnalysisModuleController extends UIController {
 
     public override LoadView() {
         return (
-           VStack(
-            ProjectMainMenu(this,this.project, 'Process Overview',  [], () => alert(''), this.menu, [], []),
-            SelectAnalysisView(this.project)
-           )
-            
+            VStack(
+                ProjectMainMenu(this, this.project, 'Process Overview', [], () => alert(''), this.menu, [], []),
+                SelectAnalysisView(this.project)
+            ).background('var(--dark-background-color)')
         )
     }
 }
