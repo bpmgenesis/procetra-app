@@ -1,4 +1,4 @@
-import { UIController, Text, UIScene, HStack, VStack, cTop, TextAlignment, UIImage, Icon, HDivider, State, Spinner } from '@tuval/forms';
+import { UIController, Text, UIScene, HStack, VStack, cTop, TextAlignment, UIImage, Icon, HDivider, State, Spinner, Theme } from '@tuval/forms';
 import { PageButton, ProjectMainMenu } from '@procetra/common';
 import { Resources } from '../../../Resources/Resources';
 import { RegularText } from '../../../UI/Views/Texts';
@@ -68,7 +68,7 @@ export class EmptyProjectControllerClass extends UIController {
                             ).height()
                         )
                     )
-                )
+                ).background(Theme.darkBackgroundColor)
         )
     }
 }

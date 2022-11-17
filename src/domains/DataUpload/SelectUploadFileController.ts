@@ -1,5 +1,5 @@
 
-import { UIController, UIScene, UIView, UIStep, VStack, cTop, UIFileUpload, Text, HStack, cLeading, Icon, RoundedRectangle, cTrailing, ForEach, If, State, IUploadFileReady, cTopLeading, Color } from '@tuval/forms';
+import { UIController, UIScene, UIView, UIStep, VStack, cTop, UIFileUpload, Text, HStack, cLeading, Icon, RoundedRectangle, cTrailing, ForEach, If, State, IUploadFileReady, cTopLeading, Color, Theme } from '@tuval/forms';
 
 import { IProjectModel, ProjectMainMenu } from '@procetra/common';
 import { MiningBrokerClient, Services } from '@procetra/common';
@@ -31,7 +31,7 @@ export class SelectUploadFileController extends UIController {
         return (
             UIScene(
                 VStack({ alignment: cTopLeading })(
-                    ProjectMainMenu(this,this.project, 'Process Overview', [], () => alert(''), null, [], []),
+                    ProjectMainMenu(this, this.project, 'Process Overview', [], () => alert(''), null, [], []),
                     VStack({ alignment: cLeading })(
                         Steps(['Select File', 'Map Columns', 'Upload File', 'Data Analysis'], 0),
                         VStack(
@@ -40,14 +40,16 @@ export class SelectUploadFileController extends UIController {
                                     VStack(
                                         Text('Drop file here').fontSize('24px').foregroundColor('#333').fontFamily("'Source Sans Pro', Arial, sans-serif")
                                     )
+                                    .shadow({ default: '0px 3px 12px var(--application-border-color)', focus: '0 0 3px 1px #00c3ff' })
+    
                                         .cursor('copy')
-                                        .backgroundColor({ hover: '#f5f5f5' })
+                                        .backgroundColor({default:Theme.secondaryBackgroundColor, hover: '#f5f5f5' })
                                         .border('2px dashed #2baab5')
                                         .cornerRadius(10),
                                     RegularText('Browse Files').foregroundColor('#2baab5').fontSize('18px').fontWeight('bold').lineHeight('20px').cursor('pointer').padding(10).fontFamily("'Source Sans Pro', Arial, sans-serif")
                                 )
                             )
-
+                               
                                 .marginTop('10px')
                                 .width(600)
                                 .height(400)
@@ -58,7 +60,7 @@ export class SelectUploadFileController extends UIController {
                         ).height()
                     )
                 )
-            )
+            ).background(Theme.darkBackgroundColor)
         )
     }
 }
