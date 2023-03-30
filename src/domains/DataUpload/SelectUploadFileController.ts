@@ -1,14 +1,10 @@
 
-import { UIController, UIScene, UIView, UIStep, VStack, cTop, UIFileUpload, Text, HStack, cLeading, Icon, RoundedRectangle, cTrailing, ForEach, If, State, IUploadFileReady, cTopLeading, Color, Theme } from '@tuval/forms';
+import { cLeading, cTopLeading, cTrailing, HStack, IUploadFileReady, State, Text, Theme, UIController, UIFileUpload, UIScene, UIView, VStack } from '@tuval/forms';
 
-import { IProjectModel, ProjectMainMenu } from '@procetra/common';
-import { MiningBrokerClient, Services } from '@procetra/common';
-import { int, Event } from '@tuval/core';
-import { FileSelected, SelectFileController } from '../../UI/Dialogs/UploadDataDialog/Controllers/SelectFileController';
-import { MapColumnsController } from '../../UI/Dialogs/UploadDataDialog/Controllers/MapColumnsController';
-import { RegularText } from '../../UI/Views/Texts';
+import { ProjectMainMenu } from '@procetra/common';
 import { Steps } from '../../UI/Dialogs/UploadDataDialog/Views/Steps';
-import { AcceptButton, CancelButton } from '../../UI/Views/Buttons';
+import { CancelButton } from '../../UI/Views/Buttons';
+import { RegularText } from '../../UI/Views/Texts';
 
 
 export class SelectUploadFileController extends UIController {

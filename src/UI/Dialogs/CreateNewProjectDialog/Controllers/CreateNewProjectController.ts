@@ -1,11 +1,11 @@
 import { Bindable } from '../../../../modules/ProcessOverview/Controllers/Overview/Bindable';
 import { CreateNewProjectDialog } from './../CreateNewProjectDialog';
-import { Text, UIController, UIView, UIScene, VStack, cTopLeading, HStack, cTrailing, cLeading } from '@tuval/forms';
+import { Text, UIController, UIView, UIScene, VStack, cTopLeading, HStack, cTrailing, cLeading, UIFormController, TextField, RequiredRule } from '@tuval/forms';
 import { RegularTextBox } from '../../../Views/RegularTextBox';
 import { AcceptButton, CancelButton } from '../../../Views/Buttons';
 import { RegularText } from '../../../Views/Texts';
-
-export class CreateNewProjectController extends UIController {
+import {UITextBoxView} from '@realmocean/inputs'
+export class CreateNewProjectController extends UIFormController {
     private dialog: CreateNewProjectDialog;
 
     private $txtName: Bindable<string>;
@@ -28,7 +28,12 @@ export class CreateNewProjectController extends UIController {
                     ).minHeight('64px').maxHeight('64px').background('#eceff1').foregroundColor('#263238').paddingLeft('10px'),
                     VStack({ alignment: cTopLeading, spacing: 20 })(
                         VStack(
-                            RegularTextBox({ icon:'\\d277', value: this.$txtName }),
+                            UITextBoxView()
+                                    .floatlabel(false)
+                                    .width('100%')
+                                    .placeholder('')
+                                   
+                            .formField('project_name', [new RequiredRule('Project name must be set')])
                         ).height(), //auto
 
                         // Select Repository Button
@@ -36,7 +41,7 @@ export class CreateNewProjectController extends UIController {
 
                         HStack(
                             CancelButton('Cancel').action(()=>this.dialog.OnCancel()),
-                            AcceptButton('OK').action(() => this.dialog.OnOKClick(this.$txtName.get()))
+                            AcceptButton('OK').action(() => this.dialog.OnOKClick(this.GetValue('project_name')))
                         )
                     ).padding(10)
                 )
